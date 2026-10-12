@@ -1,0 +1,35 @@
+# Template for a new tool. Folders starting with "_" are ignored by christy.
+#
+# To use it:
+#   cp -r tools/_template tools/mytool
+# then edit `name` below to match the new folder name. That's it, there's
+# nothing to register: `christy mytool` works right away.
+#
+# Full reference: tools/README.md
+
+# Manifest format version (required)
+schema = 1
+
+# Must match the folder name: lowercase letters, digits, '-' and '_'
+name = "mytool"
+version = "0.1.0"
+description = "One line about what this tool does"
+
+# How christy launches `entry`: python | node | bash | binary
+runtime = "bash"
+entry = "run.sh"
+
+# Optional. Leave empty (or remove) to run anywhere.
+platforms = ["linux"]
+
+[requires]
+# Commands that must exist in PATH. If one is missing, christy offers to run
+# the setup script below before launching.
+bins = []
+
+# Optional. Remove this whole section if the tool needs no setup.
+[setup]
+script = "setup.sh"
+# Files whose changes mean setup should run again (the script itself is
+# always watched), e.g. ["requirements.txt"]
+watch = []

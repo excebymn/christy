@@ -1,0 +1,22 @@
+# Manifest format version, lets the core evolve the schema safely
+schema = 1
+
+name = "zipignore"
+version = "0.1.0"
+description = "Zip a folder while respecting its .gitignore"
+
+# For python tools the core runs entry with the tool's own venv interpreter:
+#   <state>/envs/zipignore/bin/python main.py
+runtime = "python"
+entry = "main.py"
+platforms = ["linux", "macos"]
+
+[requires]
+# Checked by the core via PATH lookup
+bins = ["python3"]
+
+[setup]
+# Run only when the venv is missing, a requirement is not met, or a watched
+# file below (or the script itself) changed since the last setup
+script = "setup.sh"
+watch = ["requirements.txt"]
